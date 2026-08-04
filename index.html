@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Music Player Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="player-wrapper">
+        <!-- 3D Karusel -->
+        <div class="carousel-container" id="carousel"></div>
+
+        <!-- Yashirin Audio tegi -->
+        <audio id="main-audio" src=""></audio>
+
+        <!-- Boshqaruv paneli -->
+        <div class="player-bar">
+            <!-- Chap tugmalar (-5s, Play/Pause, +5s) -->
+            <div class="controls-left">
+                <i class="fas fa-backward-step" onclick="prevSong()" title="Oldingi"></i>
+                <i class="fas fa-rotate-left" onclick="skipBackward()" title="-5 sekund"></i>
+                <i class="fas fa-play" id="play-pause-btn" onclick="togglePlay()" title="Play/Pause"></i>
+                <i class="fas fa-rotate-right" onclick="skipForward()" title="+5 sekund"></i>
+                <i class="fas fa-forward-step" onclick="nextSong()" title="Keyingi"></i>
+            </div>
+            
+            <!-- Markaziy panel -->
+            <div class="center-panel">
+                <div class="now-playing">
+                    <img src="" id="np-img" alt="Cover">
+                    <div class="np-text">
+                        <h4 id="np-title">Musiqa nomi</h4>
+                        <p id="np-artist">Xonanda</p>
+                    </div>
+                    <!-- Vizualizator -->
+                    <div class="visualizer" id="visualizer">
+                        <div class="bar bar-1"></div>
+                        <div class="bar bar-2"></div>
+                        <div class="bar bar-3"></div>
+                    </div>
+                </div>
+
+                <!-- Vaqt chizig'i -->
+                <div class="progress-area">
+                    <span id="current-time">0:00</span>
+                    <div class="progress-bar-container" id="progress-container">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <span id="total-time">0:00</span>
+                </div>
+            </div>
+
+            <!-- Faqat Menyu (Ro'yxat) tugmasi qoldi -->
+            <div class="controls-right">
+                <i class="fas fa-list-ul menu-btn" onclick="togglePlaylist()" title="Menyu va Ro'yxat"></i>
+            </div>
+        </div>
+    </main>
+
+    <!-- Matn Oynasi -->
+    <div id="lyrics-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="close-btn" onclick="toggleLyrics()">✖</button>
+            <h3>Qo'shiq Haqida</h3>
+            <p id="lyrics-text"></p>
+        </div>
+    </div>
+
+    <!-- Ro'yxat (Playlist va Sozlamalar) Oynasi -->
+    <div id="playlist-modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="close-btn" onclick="togglePlaylist()">✖</button>
+            
+            <!-- YANGI: Modal ichidagi Asboblar paneli (Matn va Ovoz) -->
+            <div class="modal-tools">
+                <div class="tool-btn" onclick="openLyricsFromPlaylist()">
+                    <i class="fas fa-quote-right"></i> Matn
+                </div>
+                <div class="tool-btn" onclick="toggleMute()">
+                    <i class="fas fa-volume-high" id="volume-btn"></i> Ovoz
+                </div>
+            </div>
+
+            <h3>Musiqalar Ro'yxati</h3>
+            <ul id="playlist-list"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
