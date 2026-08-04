@@ -2,218 +2,439 @@
    1. O'ZGARUVCHILAR VA ASOSIY SOZLAMALAR
    ========================================== */
 :root {
-    --bg-gradient: radial-gradient(circle at center, #c97c36, #4a280d);
-    --text-primary: #ffffff;
-    --text-secondary: #cccccc;
-    --glass-bg: rgba(255, 255, 255, 0.15);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --card-bg: #222222;
-    --shadow-color: rgba(0, 0, 0, 0.3);
+  --bg-gradient: radial-gradient(circle at center, #c97c36, #4a280d);
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --card-bg: #222222;
+  --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
-    height: 100dvh; /* Yangilandi: Ekranning aniq balandligi */
-    min-height: 100dvh;
-    background: var(--bg-gradient);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden !important; /* Yangilandi: Skrollni majburiy o'chirish */
-    overscroll-behavior: none; /* Yangilandi: Ekranni tortganda yangilanishni to'xtatish */
-    color: var(--text-primary);
+  height: 100dvh; /* Yangilandi: Ekranning aniq balandligi */
+  min-height: 100dvh;
+  background: var(--bg-gradient);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden !important; /* Yangilandi: Skrollni majburiy o'chirish */
+  overscroll-behavior: none; /* Yangilandi: Ekranni tortganda yangilanishni to'xtatish */
+  color: var(--text-primary);
 }
 
 .player-wrapper {
-    width: 100%; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
 }
 
 /* ==========================================
    2. 3D KARUSEL
    ========================================== */
 .carousel-container {
-    position: relative; 
-    width: 100%; 
-    height: 400px;
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    perspective: 1200px; 
-    touch-action: pan-y; 
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+  touch-action: pan-y;
 }
 
 .card {
-    position: absolute; 
-    width: 240px; 
-    height: 300px; 
-    border-radius: 20px; 
-    overflow: hidden;
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease;
-    box-shadow: 0 15px 35px var(--shadow-color); 
-    cursor: pointer; 
-    background-color: var(--card-bg);
+  position: absolute;
+  width: 240px;
+  height: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition:
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.5s ease;
+  box-shadow: 0 15px 35px var(--shadow-color);
+  cursor: pointer;
+  background-color: var(--card-bg);
 }
 
-.card img { width: 100%; height: 100%; object-fit: cover; }
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .card-info {
-    position: absolute; bottom: 0; width: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-    padding: 40px 15px 15px; text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  padding: 40px 15px 15px;
+  text-align: center;
 }
-.card-info h3 { font-size: 1.1rem; font-weight: 600; }
-.card-info p { margin-top: 5px; font-size: 0.9rem; color: var(--text-secondary); }
+.card-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.card-info p {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
 
 /* ==========================================
    3. PLEYER BAR VA TUGMALAR (KOMPYUTER UCHUN)
    ========================================== */
 .player-bar {
-    width: 95%; max-width: 850px;
-    background: var(--glass-bg); backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px); border: 1px solid var(--glass-border);
-    border-radius: 50px; padding: 15px 30px;
-    display: flex; justify-content: space-between; align-items: center;
-    margin-top: 40px; box-shadow: 0 10px 30px var(--shadow-color);
+  width: 95%;
+  max-width: 850px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid var(--glass-border);
+  border-radius: 50px;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  box-shadow: 0 10px 30px var(--shadow-color);
 }
 
-.controls-left { display: flex; gap: 15px; align-items: center; font-size: 1.2rem; color: rgba(255, 255, 255, 0.8); }
-.controls-right { display: flex; align-items: center; font-size: 1.2rem; color: rgba(255, 255, 255, 0.8); }
+.controls-left {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+.controls-right {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
 
-.controls-left i, .controls-right i { cursor: pointer; transition: 0.3s; }
-.controls-left i:hover, .controls-right i:hover { color: var(--text-primary); transform: scale(1.1); }
-#play-pause-btn { font-size: 1.5rem; color: var(--text-primary); }
+.controls-left i,
+.controls-right i {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.controls-left i:hover,
+.controls-right i:hover {
+  color: var(--text-primary);
+  transform: scale(1.1);
+}
+#play-pause-btn {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
 
-.menu-btn { font-size: 1.2rem; transition: 0.3s; }
+.menu-btn {
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
 
 /* ==========================================
    4. MARKAZIY QISM VA VIZUALIZATOR
    ========================================== */
-.center-panel { display: flex; flex-direction: column; align-items: center; width: 350px; gap: 8px; }
+.center-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  gap: 8px;
+}
 
 .now-playing {
-    display: flex; align-items: center; gap: 15px; width: 100%;
-    background: rgba(0, 0, 0, 0.2); padding: 5px 15px 5px 5px; border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 5px 15px 5px 5px;
+  border-radius: 30px;
 }
-.now-playing img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
-.np-text { display: flex; flex-direction: column; overflow: hidden; white-space: nowrap; flex: 1; }
-.np-text h4 { font-size: 0.9rem; font-weight: 600; }
-.np-text p { font-size: 0.75rem; color: var(--text-secondary); }
+.now-playing img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.np-text {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 1;
+}
+.np-text h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.np-text p {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
 
-.visualizer { display: flex; gap: 2px; align-items: flex-end; height: 15px; opacity: 0; transition: 0.3s; }
-.visualizer.active { opacity: 1; }
-.visualizer .bar { width: 3px; background: var(--text-primary); animation: bounce 1s infinite alternate; }
-.bar-1 { height: 100%; } .bar-2 { height: 60%; animation-delay: 0.3s !important; } .bar-3 { height: 80%; animation-delay: 0.6s !important; }
-@keyframes bounce { 0% { height: 20%; } 100% { height: 100%; } }
+.visualizer {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  height: 15px;
+  opacity: 0;
+  transition: 0.3s;
+}
+.visualizer.active {
+  opacity: 1;
+}
+.visualizer .bar {
+  width: 3px;
+  background: var(--text-primary);
+  animation: bounce 1s infinite alternate;
+}
+.bar-1 {
+  height: 100%;
+}
+.bar-2 {
+  height: 60%;
+  animation-delay: 0.3s !important;
+}
+.bar-3 {
+  height: 80%;
+  animation-delay: 0.6s !important;
+}
+@keyframes bounce {
+  0% {
+    height: 20%;
+  }
+  100% {
+    height: 100%;
+  }
+}
 
 /* ==========================================
    5. VAQT CHIZIG'I (PROGRESS BAR)
    ========================================== */
-.progress-area { display: flex; align-items: center; gap: 10px; width: 100%; font-size: 0.75rem; color: var(--text-secondary); }
-.progress-bar-container { flex: 1; height: 5px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; cursor: pointer; position: relative; }
-.progress { height: 100%; width: 0%; background: var(--text-primary); border-radius: 10px; position: relative; }
-.progress::after {
-    content: ''; position: absolute; right: -5px; top: 50%; transform: translateY(-50%);
-    width: 10px; height: 10px; background: #fff; border-radius: 50%; box-shadow: 0 0 5px rgba(0,0,0,0.5); opacity: 0; transition: 0.2s;
+.progress-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
 }
-.progress-bar-container:hover .progress::after { opacity: 1; }
+.progress-bar-container {
+  flex: 1;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+}
+.progress {
+  height: 100%;
+  width: 0%;
+  background: var(--text-primary);
+  border-radius: 10px;
+  position: relative;
+}
+.progress::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: 0.2s;
+}
+.progress-bar-container:hover .progress::after {
+  opacity: 1;
+}
 
 /* ==========================================
    6. MODALLAR (YASHIRIN OYNALAR)
    ========================================== */
 .modal {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
-    display: flex; justify-content: center; align-items: center;
-    z-index: 1000; transition: opacity 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
 }
-.modal.hidden { opacity: 0; pointer-events: none; }
+.modal.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 .modal-content {
-    background: var(--glass-bg); border: 1px solid var(--glass-border);
-    padding: 30px; border-radius: 20px; width: 90%; max-width: 400px;
-    max-height: 70vh; overflow-y: auto; position: relative; text-align: center;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  padding: 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+  position: relative;
+  text-align: center;
 }
-.close-btn { position: absolute; top: 10px; right: 15px; background: transparent; border: none; color: white; font-size: 1.2rem; cursor: pointer; }
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
 
 /* Modal ichidagi Asboblar (Matn va Ovoz) */
 .modal-tools {
-    display: flex; justify-content: center; gap: 15px;
-    margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .tool-btn {
-    display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); 
-    padding: 8px 15px; border-radius: 10px; cursor: pointer; transition: 0.3s; font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 0.9rem;
 }
-.tool-btn:hover { background: rgba(255,255,255,0.2); }
+.tool-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
 
-#playlist-list { list-style: none; text-align: left; }
-#playlist-list li { padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: 0.2s; }
-#playlist-list li:hover { background: rgba(255,255,255,0.1); border-radius: 5px; }
-#lyrics-text { margin-top: 15px; white-space: pre-line; line-height: 1.6; font-size: 0.95rem; color: #ddd; }
-
+#playlist-list {
+  list-style: none;
+  text-align: left;
+}
+#playlist-list li {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: 0.2s;
+}
+#playlist-list li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+#lyrics-text {
+  margin-top: 15px;
+  white-space: pre-line;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: #ddd;
+}
 
 /* ==========================================
    📱 7. MOBIL EKRANLAR UCHUN MOSLASHUVCHAN DIZAYN
    ========================================== */
 @media (max-width: 768px) {
-    /* Yangilandi: Karusel balandligi va tepa bo'shliqni kamaytiramiz */
-    .carousel-container {
-        height: 280px; 
-        margin-top: 30px; 
-    }
-    
-    /* Yangilandi: Kartochkalar o'lchamini biroz kichraytiramiz */
-    .card { width: 170px; height: 220px; }
+  /* Yangilandi: Karusel balandligi va tepa bo'shliqni kamaytiramiz */
+  .carousel-container {
+    height: 280px;
+    margin-top: 30px;
+  }
 
-    /* Yangilandi: Pleyer bar yig'chamroq bo'ladi */
-    .player-bar {
-        flex-direction: column; 
-        padding: 15px; 
-        gap: 15px;
-        border-radius: 25px; 
-        width: 95%;
+  /* Yangilandi: Kartochkalar o'lchamini biroz kichraytiramiz */
+  .card {
+    width: 170px;
+    height: 220px;
+  }
+
+  .visualizer {
+        margin-right: 50px;
     }
 
-    .center-panel { order: 1; width: 100%; }
-    .now-playing { width: 100%; justify-content: center; }
+  /* Yangilandi: Pleyer bar yig'chamroq bo'ladi */
+  .player-bar {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+    border-radius: 25px;
+    width: 95%;
+  }
 
-    .controls-left {
-        order: 2; width: 100%; justify-content: center; gap: 15px; 
-    }
-    .controls-left i { font-size: 1.3rem; }
-    #play-pause-btn { font-size: 1.8rem; }
+  .center-panel {
+    order: 1;
+    width: 100%;
+  }
+  .now-playing {
+    width: 100%;
+    justify-content: center;
+  }
 
-    /* Yangilandi: Menyu tugmasi ekranga qotirilgan holda qoladi */
-    .controls-right {
-        position: fixed;
-        top: 20px; 
-        right: 20px; 
-        left: auto; 
-        transform: none; 
-        z-index: 500;
-        margin: 0;
-        padding: 0;
-    }
+  .controls-left {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+  }
+  .controls-left i {
+    font-size: 1.3rem;
+  }
+  #play-pause-btn {
+    font-size: 1.8rem;
+  }
 
-    .menu-btn {
-        font-size: 1.1rem;
-        width: 42px;
-        height: 42px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 50%;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        margin: 0;
-        padding: 0;
-    }
-    
-    .modal-content { width: 95%; padding: 20px; }
+  /* Yangilandi: Menyu tugmasi ekranga qotirilgan holda qoladi */
+  .controls-right {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    left: auto;
+    transform: none;
+    z-index: 500;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-btn {
+    font-size: 1.1rem;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    padding: 0;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
 }
