@@ -7,7 +7,7 @@ const songs = [
         artist: "Murodbek Qilichev",
         cover: "photo1.jpg",
         src: "Murodbek-Qilichev-Ey-sevgilim.mp3",
-        lyrics: "Mavzu: Sevgi va sog'inch.\n\nMatn hozircha kiritilmagan..."
+        lyrics: "Mavzu: Sevgi va sog'inch.\n\n\"Ey sevgilim ishqing bilan Til yuragimni til yuragimni Men bir yengil tortay axir Sezib senga men keragimni\""
     },
     {
         title: "Samiya",
