@@ -14,13 +14,15 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    min-height: 100vh;
+    height: 100dvh; /* Yangilandi: Ekranning aniq balandligi */
+    min-height: 100dvh;
     background: var(--bg-gradient);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow: hidden !important; /* Yangilandi: Skrollni majburiy o'chirish */
+    overscroll-behavior: none; /* Yangilandi: Ekranni tortganda yangilanishni to'xtatish */
     color: var(--text-primary);
 }
 
@@ -159,20 +161,21 @@ body {
    📱 7. MOBIL EKRANLAR UCHUN MOSLASHUVCHAN DIZAYN
    ========================================== */
 @media (max-width: 768px) {
-    /* Tepada menyu tugmaga joy ochish uchun margin beramiz */
+    /* Yangilandi: Karusel balandligi va tepa bo'shliqni kamaytiramiz */
     .carousel-container {
-        height: 350px; 
-        margin-top: 60px; 
+        height: 280px; 
+        margin-top: 30px; 
     }
     
-    .card { width: 190px; height: 250px; }
+    /* Yangilandi: Kartochkalar o'lchamini biroz kichraytiramiz */
+    .card { width: 170px; height: 220px; }
 
-    /* Pastki oyna ustma-ust bo'ladi */
+    /* Yangilandi: Pleyer bar yig'chamroq bo'ladi */
     .player-bar {
         flex-direction: column; 
-        padding: 20px; 
-        gap: 20px;
-        border-radius: 30px; 
+        padding: 15px; 
+        gap: 15px;
+        border-radius: 25px; 
         width: 95%;
     }
 
@@ -180,24 +183,23 @@ body {
     .now-playing { width: 100%; justify-content: center; }
 
     .controls-left {
-        order: 2; width: 100%; justify-content: center; gap: 20px; 
+        order: 2; width: 100%; justify-content: center; gap: 15px; 
     }
-    .controls-left i { font-size: 1.4rem; }
-    #play-pause-btn { font-size: 2rem; }
+    .controls-left i { font-size: 1.3rem; }
+    #play-pause-btn { font-size: 1.8rem; }
 
-    /* 🚀 MANA SHU YERDA TUGMA TEPADA VA O'NG BURCHAKDA TURADI */
+    /* Yangilandi: Menyu tugmasi ekranga qotirilgan holda qoladi */
     .controls-right {
         position: fixed;
-        top: 25px; /* Tepadan masofa */
-        right: 25px; /* O'ng qirg'oqdan masofa */
-        left: auto; /* O'rtaga tortishni bekor qilamiz */
-        transform: none; /* O'rtaga tortishni bekor qilamiz */
+        top: 20px; 
+        right: 20px; 
+        left: auto; 
+        transform: none; 
         z-index: 500;
         margin: 0;
         padding: 0;
     }
 
-    /* Ro'yxat (Menyu) tugmasining dumaloq shakli */
     .menu-btn {
         font-size: 1.1rem;
         width: 42px;
